@@ -6,3 +6,7 @@ if ("serviceWorker" in navigator) {
       .catch((err) => console.log("Service Worker kaydedilemedi!", err));
   });
 }
+
+document.getElementById("openYouTube").addEventListener("click", function () {
+  window.open("https://www.youtube.com", "_blank");
+});
