@@ -1,8 +1,14 @@
 self.addEventListener("install", (event) => {
-  console.log("Service Worker yüklendi.");
   event.waitUntil(
     caches.open("pwa-cache").then((cache) => {
-      return cache.addAll(["/", "/index.html", "/styles.css", "/app.js"]);
+      return cache.addAll([
+        "/helllooo/index.html",
+        "/helllooo/",
+        "/helllooo/styles.css",  // CSS dosyan varsa ekle
+        "/helllooo/app.js",      // JS dosyan varsa ekle
+        "/helllooo/icon-192x192.png",
+        "/helllooo/icon-512x512.png"
+      ]);
     })
   );
 });
@@ -12,7 +18,7 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
     }).catch(() => {
-      return caches.match("./index.html");
+      return caches.match("/helllooo/index.html");
     })
   );
 });
